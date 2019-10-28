@@ -1,0 +1,28 @@
+<!--DOCTYPE html-->
+
+<html>
+    <head>
+        <title> {% block head %} Django Practice {% endblock head %}</title>
+    </head>
+
+<body>
+    <div class='container'>
+        {% block content %}
+        <h1>{{ title }} is working</h1>
+
+        {% for obj in object_list%}
+        
+        <a href = '{{obj.get_absolute_url}}'>
+        {{ obj.firstname }}</a><br/>
+        {{ obj.lastname }}<br/>
+        {{ obj.id }}<br/> <br/>
+        
+        {% endfor %}
+        {% endblock content %}
+
+    </div>
+
+
+</body>
+
+</html>

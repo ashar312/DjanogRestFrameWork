@@ -1,8 +1,8 @@
-<!--DOCTYPE html-->
+{% extends "base.html" %}
 
-<html>
+{% block head %} {{ instance.firstname }} | {{ block.super }} {% endblock head %}
 
-<body>
+{% block content %}
 <h1>{{ firstname }} is here</h1>
 
 
@@ -10,6 +10,4 @@
 {{ instance.lastname }}<br/>
 {{ instance.id }}<br/> <br/>
 
-</body>
-
-</html>
+{% endblock content %}
