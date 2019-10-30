@@ -10,6 +10,8 @@ from rest_framework import status
 from . models import employees
 from . Serializers import employeesSerializers
 from . forms import Employeesform
+from django.core.paginator import Paginator
+from django.shortcuts import render
 
 
 def post_create(request):
@@ -38,12 +40,19 @@ def post_get(request, id=None):
 
 def post_list(request):
     queryset = employees.objects.all()
-    instance = get_object_or_404(employees,id = 2)
+    paginator = Paginator(queryset, 25) # Show 25 contacts per page
+
+    page = request.GET.get('page')
+    contacts = paginator.get_page(page)
     context = {
-        'object_list' : queryset,
+        'object_list' : contacts,
         'title' : 'LIST'
     }
     return render(request, 'base.html',context)
+
+
+
+
 
 def post_update(request, id=None):
     instance = get_object_or_404(employees,id = id)
