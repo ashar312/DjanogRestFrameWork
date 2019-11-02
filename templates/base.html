@@ -18,6 +18,9 @@
         {% for obj in object_list%}
         
         <a href = '{{obj.get_absolute_url}}'>
+            {% if obj.image %}
+            <img src="{{ obj.image.url }}" class="img-responsive" />
+            {% endif %}
         {{ obj.firstname }}</a><br/>
         {{ obj.lastname }}<br/>
         {{ obj.id }}<br/> <br/>

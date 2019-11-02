@@ -8,5 +8,6 @@ class Employeesform(forms.ModelForm):
         fields = [
             'firstname',
             'lastname',
-            'emp_id'
+            'emp_id',
+            'image'
         ]

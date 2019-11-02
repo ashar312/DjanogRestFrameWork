@@ -15,14 +15,14 @@ from django.shortcuts import render
 
 
 def post_create(request):
-    form = Employeesform(request.POST or None)
+    form = Employeesform(request.POST or None, request.FILES or None)
     print(request.POST)
     if(form.is_valid()):
         instance = form.save(commit = False)
         print(form.cleaned_data.get('firstname'))
         instance.save()
         messages.success(request,"Success")
-        return HttpResponseRedirect(instance.get_absolute_url())
+       # return HttpResponseRedirect(instance.get_absolute_url())
     else:
         messages.error(request,"Fail")
     context = {
@@ -56,7 +56,7 @@ def post_list(request):
 
 def post_update(request, id=None):
     instance = get_object_or_404(employees,id = id)
-    form = Employeesform(request.POST or None,instance=instance)
+    form = Employeesform(request.POST or None, request.FILES or None ,instance=instance)
     if(form.is_valid()):
         instance = form.save(commit = False)
         print(form.cleaned_data.get('firstname'))

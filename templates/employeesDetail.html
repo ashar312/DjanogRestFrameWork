@@ -3,6 +3,9 @@
 {% block head %} {{ instance.firstname }} | {{ block.super }} {% endblock head %}
 
 {% block content %}
+{% if instance.image %}
+                <img src="{{ instance.image.url }}" class="img-responsive">
+{% endif %}
 <h1>{{ firstname }} is here</h1>
 
 
